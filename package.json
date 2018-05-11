@@ -1,7 +1,7 @@
 {
-  "name": "STAN",
+  "name": "STAAN",
   "version": "0.0.1",
-  "description": "Still Thinking About a Name...",
+  "description": "Still Thinking About A Name...",
   "main": "app.js",
   "scripts": {
     "start": "grunt",
