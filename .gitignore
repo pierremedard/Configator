@@ -1,6 +1,6 @@
 db
 .tscache
-.dist/*
+dist/*
 node_modules
 .env
 *.txt
