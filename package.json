@@ -1,0 +1,40 @@
+{
+  "name": "STAN",
+  "version": "0.0.1",
+  "description": "Still Thinking About a Name...",
+  "main": "app.js",
+  "scripts": {
+    "start": "grunt",
+    "build": "grunt build"
+  },
+  "author": "Pierre Medard",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^2.0.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.1",
+    "mongoose": "^5.0.17",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
+    "@types/dotenv": "^4.0.3",
+    "@types/express": "^4.11.1",
+    "@types/passport": "^0.4.5",
+    "@types/passport-jwt": "^3.0.1",
+    "@types/passport-local": "^1.0.33",
+    "@types/mongoose": "^5.0.12",
+    "@types/node": "^10.0.3",
+    "grunt": "^1.0.2",
+    "grunt-concurrent": "^2.3.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.1",
+    "grunt-nodemon": "^0.4.2",
+    "grunt-run": "^0.8.1",
+    "grunt-ts": "^6.0.0-beta.19",
+    "typescript": "^2.8.3"
+  }
+}
