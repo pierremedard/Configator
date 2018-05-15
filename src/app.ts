@@ -22,8 +22,8 @@ class App {
 
   private mountRoutes = (): void => {
     this.app.use('/users', userRouter.router);
-    this.app.use('/login', userAuth.login);
-    this.app.use('/logout', userAuth.logout);
+    this.app.post('/login', userAuth.checkLogin, userAuth.login);
+    this.app.post('/logout', userAuth.logout);
   }
 
   private config = (): void => {

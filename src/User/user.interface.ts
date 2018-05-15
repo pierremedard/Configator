@@ -1,10 +1,16 @@
 import { Document } from "mongoose";
 
+export const enum Roles {
+  Player = 'player',
+  Admin = 'admin'
+}
+
 export interface IUser {
-  password: string;
-  email: string;
-  createdAt?: Date;
-  comparePassword: (password :string) => boolean;
+  password: string,
+  email: string,
+  isAdmin: boolean,
+  createdAt?: Date,
+  comparePassword: (password :string) => boolean
 }
 
 export interface IUserModel extends IUser, Document {

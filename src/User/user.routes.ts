@@ -4,20 +4,18 @@ import userAuth from "./user.auth";
 
 class UserRouter {
   public router :Router;
-  private controller : UserController;
 
   constructor() {
     this.router = Router();
-    this.controller = new UserController();
     this.routes();
   }
 
   private routes = () :void => {
-    this.router.post('/', this.controller.create);
-    this.router.get('/',
-      userAuth.passport.authenticate('jwt', { session: false }),
-      this.controller.getAll
-    );
+    this.router.post('/', UserController.create);
+    this.router.get('/', userAuth.isAdmin(), UserController.getAll);
+    this.router.get('/profile', userAuth.isLoggedIn, UserController.profile);
+    this.router.put('/:id', userAuth.isLoggedIn, UserController.update)
+    this.router.delete('/:id', userAuth.isLoggedIn, UserController.delete)
   }
 }
 

@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { IUserModel } from "./user.interface";
+import { IUserModel, Roles } from "./user.interface";
 import * as bcrypt from "bcrypt";
 
 let userSchema: Schema = new Schema({
@@ -13,6 +13,10 @@ let userSchema: Schema = new Schema({
     type: String,
     required: true
   },
+  isAdmin: {
+    type: Boolean,
+    default: 'false'
+  }
 });
 
 userSchema.pre<IUserModel>("save", function(next) {
@@ -22,7 +26,16 @@ userSchema.pre<IUserModel>("save", function(next) {
 });
 
 userSchema.methods.comparePassword = function(password) :boolean {
-  return (bcrypt.compareSync(password, this.password));
+  return bcrypt.compareSync(password, this.password);
 }
+
+userSchema.set('toJSON', {
+  transform: function(doc, ret, options) {
+    return {
+      "id": ret._id,
+      "email": ret.email
+    }
+  }
+})
 
 export default model<IUserModel>("User", userSchema);
