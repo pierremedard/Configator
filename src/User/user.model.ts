@@ -2,7 +2,7 @@ import { Schema, model } from "mongoose";
 import { IUserModel, Roles } from "./user.interface";
 import * as bcrypt from "bcrypt";
 
-let userSchema: Schema = new Schema({
+const userSchema: Schema = new Schema({
   createdAt: Date,
   email: {
     type: String,
@@ -16,6 +16,10 @@ let userSchema: Schema = new Schema({
   isAdmin: {
     type: Boolean,
     default: 'false'
+  },
+  points: {
+    type: Number,
+    default: 0
   }
 });
 

@@ -10,6 +10,7 @@ export interface IUser {
   email: string,
   isAdmin: boolean,
   createdAt?: Date,
+  points: number,
   comparePassword: (password :string) => boolean
 }
 

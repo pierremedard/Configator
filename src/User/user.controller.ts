@@ -8,6 +8,7 @@ class UserController {
     delete body._id;
     delete body.createdAt;
     delete body.isAdmin;
+    delete body.points;
     return body;
   }
 
