@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "baseUrl": "app",
+    "rootDir": "app",
+    "outDir": "../dist",
+    "sourceMap": false,
+    "moduleResolution": "node",
+    "typeRoots": [ "../node_modules/@types" ]
+  },
+  "include": [
+    "./**/*"
+  ]
+}

@@ -1,40 +1,41 @@
+const webpackConfig = require('./webpack.config');
+const path = require('path');
+
 module.exports = function(grunt) {
   "use strict";
 
   grunt.initConfig({
+    webpack: {
+      prod: webpackConfig,
+      dev: Object.assign({ watch: true }, webpackConfig)
+    },
     nodemon: {
       dev: {
         script: './dist/index.js'
       },
       options: {
-        ignore: ['node_modules/**', 'gruntfile.js']
+        ignore: ['node_modules/**', 'gruntfile.js', 'src/**']
       }
     },
     ts: {
-      app: {
-        files: [{
-          src: ["src/\*\*/\*.ts", "!src/.baseDir.ts"],
-          dest: "./dist"
-        }],
-        options: {
-          module: "commonjs",
-          target: "es6",
-          sourceMap: false,
-          rootDir: "src"
-        }
+      default: {
+        tsconfig: "app/tsconfig.json"
       }
     },
     watch: {
       ts: {
-        files: ["src/\*\*/\*.ts"],
+        files: [
+          "app/\*\*/\*.ts",
+          "app/\*\*/\*.json"
+        ],
         tasks: ["ts"]
       }
     },
     concurrent: {
       watchers: {
-        tasks: ['watch', 'nodemon'],
+        tasks: ['watch', 'webpack:dev', "nodemon"],
         options: {
-            logConcurrentOutput: true
+          logConcurrentOutput: true
         }
       }
     }
@@ -44,8 +45,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-ts");
   grunt.loadNpmTasks("grunt-nodemon");
   grunt.loadNpmTasks("grunt-concurrent");
+  grunt.loadNpmTasks('grunt-webpack');
 
-  grunt.registerTask("build", [ "ts" ]);
-
-  grunt.registerTask("default", [ "ts", "concurrent:watchers" ]);
+  grunt.registerTask("build", [ "ts", "webpack:prod" ]);
+  grunt.registerTask("default", [ "build", "concurrent:watchers" ]);
 };

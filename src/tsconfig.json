@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "es5", "es2016"],
+    "module": "es2015",
+    "target": "es5",
+    "outDir": "../static",
+    "rootDir": ".",
+    "baseUrl": ".",
+    "sourceMap": true,
+    "removeComments": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "allowJs": true,
+    "typeRoots": [ "../node_modules/@types" ]
+  },
+  "include": [
+    "./**/*"
+  ]
+}

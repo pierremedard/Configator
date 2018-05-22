@@ -3,6 +3,7 @@ import { Strategy as JwtStrategy, ExtractJwt } from "passport-jwt";
 import * as passport from "passport";
 import User from "../User/user.model";
 import { IUserModel } from "../User/user.interface";
+import * as path from "path";
 
 require('dotenv').config();
 
