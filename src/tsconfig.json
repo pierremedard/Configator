@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "es5", "es2016"],
-    "module": "es2015",
-    "target": "es5",
+    "module": "es6",
+    "target": "es2015",
     "outDir": "../static",
     "rootDir": ".",
     "baseUrl": ".",

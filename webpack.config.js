@@ -11,34 +11,25 @@ module.exports = {
     path: path.resolve(__dirname, './static'),
     publicPath: '/static/',
     filename: 'build.js',
-    libraryTarget: 'commonjs'
   },
   module: {
     rules: [
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        include: [
-          path.resolve(__dirname, "src")
-        ]
       },
       {
-        test: /(\.js$|\.ts(x?)$)/,
+        test: /\.ts$/,
         exclude: /node_modules/,
-        use: [
-          { loader: 'babel-loader' },
-          {
-            loader: 'ts-loader', 
-            options: {
-              appendTsSuffixTo: [/\.vue$/]
-            }
-          },
-        ],
+        loader: 'ts-loader', 
+        options: {
+          appendTsSuffixTo: [/\.vue$/]
+        }
       }
     ]
   },
   resolve: {
-    extensions: ['.js', '.ts', '.vue', '.html', '.json'],
+    extensions: ['.ts', '.js', '.vue', '.json'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
     },
@@ -46,10 +37,9 @@ module.exports = {
       new TsconfigPathsPlugin({ configFile: "./src/tsconfig.json" })
     ]
   },
-  externals: Object.keys(require('./package.json').dependencies),
-  devtool: 'source-map',
+  devtool: '#eval-source-map',
   plugins: [
-    new VueLoaderPlugin()
-    //new UglifyJSPlugin()
+    new VueLoaderPlugin(),
+    new UglifyJSPlugin()
   ]
  }
