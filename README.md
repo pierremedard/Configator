@@ -1,6 +1,6 @@
-# Configalligator
+# TVN
 
-Build your own PC with Configalligator !
+Just an example using Typescript Vue and Node
 
 ## Getting Started
 
